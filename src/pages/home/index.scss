@@ -1,5 +1,6 @@
 .index {
   padding: 10px;
+  width: 98vw;
   background-image: url('../../assets/bg.png');
   // 设置背景图片填充整个元素
   background-size: cover;
@@ -8,7 +9,7 @@
   // 设置背景图片不重复
   background-repeat: no-repeat;
   height: 100vh;
-  border: 3px solid #c22525;
+  // border: 3px solid #c22525;
 }
 
 .top-bar {
@@ -27,9 +28,8 @@
   margin-right: 20px;
   // 设置为圆形
   border-radius: 50%;
-  width: 10vw; // 10% of the viewport width
-  height: 10vw; // 10% of the viewport width
-  font: 1em sans-serif; // 1em is equal to the current font size
+  width: 9vw; // 10% of the viewport width
+  height: 9vw; // 10% of the viewport width
   // 字体垂直水平居中
   display: flex;
   justify-content: center;
@@ -41,12 +41,13 @@
   line-height: 1; // 防止行高导致的文字溢出
 }
 
+.text{
+  font-size: 10px;
+}
+
 .welcome {
-  // 清除默认内外边距
-  text-align: center;
-  width: 100%;
+  width: 98vw;
   height: 20.4vh;
-  margin-bottom: 20px;
   background-image: url('../../assets/welcome-bg.png');
   // 设置背景图片填充整个元素
   background-size: cover;
@@ -54,44 +55,33 @@
   background-position: center;
   // 设置背景图片重复
   background-repeat: no-repeat;
-  //   border: 1px solid #000;
+  position: relative;
+  margin-left: -2px;
+  // border: 1px solid #000;
 }
 
+// 字体大小使用px
+// 宽高使用百分比vw vh
+// margin padding使用px
+
 .welcome-text {
-  //   字体加粗
   font-weight: bold;
-  //   border: 1px solid #ff0000;
   font-size: 1.4em;
-  //   设置文字颜色
   color: white;
-  // 设置文字阴影
-  //   text-shadow: 1px 1px 1px #000;
-  // 设置文字横向排列
-  flex-direction: row;
-  // 防止文字溢出
-  line-height: 1; // 防止行高导致的文字溢出
-  // 设置文字行高
-  line-height: 1.5;
-
-  // 设置相对定位，左-2vw,上5vh
-  position: relative;
-  left: -2vw;
-  top: 2vh;
-
-  // 不占用空间
-  display: inline-block;
+  display: flex;
+  justify-content: flex-start;
+  padding: 35px 0 0 50px;
+  // border: 1px solid #ff0000;
 }
 
 .sub-text {
   font-size: 1em;
   color: white;
-  // text-shadow: 1px 1px 1px #000;
-  line-height: 1.5;
-  position: relative;
-  left: -35vw;
-  top: 6vh;
-  // 不占用空间
-  display: inline-block;
+  display: flex;
+  // 解释：flex-start：交叉轴的起点对齐。
+  justify-content: flex-start;
+  padding: 18px 0 0 50px;
+  // border: 1px solid #000;
 }
 
 .invite-button {
@@ -99,92 +89,61 @@
 }
 
 .features {
-  //   border: 1px solid #000;
-  //   设置display为flex 布局  横向排列
+  width: 98vw;
+  height: 9vh;
   display: flex;
-  //   设置横向排列 两端对齐 之间的间距为space-between
-  //   flex-wrap: left;
   justify-content: space-between;
+  position: relative;
+  // border: 1px solid #000;
 }
 
 .feature1 {
-  //   border: 1px solid #000;
-  width: 50%;
-  //   margin-bottom: 20px;
-  text-align: center;
+  width: 50vw;
   background-image: url('../../assets/ai-scan-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: -1pc;
-  margin-right: 0pc;
+  position: relative;
+  margin-right: -11px;
+  margin-top: 2px;
+  // border: 1px solid #000;
 }
 
 .feature2 {
-  margin-top: -1pc;
-  margin-right: 0pc;
-  // border: 1px solid #000;
-  width: 50%;
-  text-align: center;
+  width: 50vw;
   background-image: url('../../assets/knowledge-search-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-/* .feature3 {
-    border: 1px solid #000;
-  width: 48%;
-  margin-bottom: 20px;
-  text-align: center;
-  background-image: url('../../assets/ai-scan-background.png');
-}
-.feature4 {
-    border: 1px solid #000;
-  width: 48%;
-  margin-bottom: 20px;
-  text-align: center;
-  background-image: url('../../assets/ai-scan-background.png');
-} */
-
-.feature-text {
-  font-size: 1em;
-  color: rgb(255, 255, 255);
-  // text-shadow: 1px 1px 1px #000;
-  line-height: 1.5;
   position: relative;
-  left: 2vw;
-  top: 2vh;
-  // 不占用空间
-  display: inline-block;
-  position: relative;
-  top: -2pc;
-  left: 1pc;
+  margin-left: -11px;
+  margin-top: 2px;
   // border: 1px solid #000;
 }
 
-.sub-text {
-  font-size: 0.8em;
-
+.feature-text {
+  display: flex;
+  margin: 20px 0 0 130px;
+  font-size: 28px;
   color: rgb(255, 255, 255);
-  // text-shadow: 1px 1px 1px #000;
-  line-height: 1.5;
-  position: relative;
-  left: -35vw;
-  top: 6vh;
-  // 不占用空间
-  display: inline-block;
+  // border: 1px solid #000;
+}
+
+.core-sub-text{
+  color: white;
+  display: flex;
+  margin: 6px 0px 0 130px;
+  font-size: 24px;
+  // border: 1px solid #000;
 }
 
 .feature-icon {
-  display: line-block;
-  //   border: 1px solid #000;
+  position: absolute;
+  margin: 25px 0 0 40px;
   border-radius: 50%;
-  width: 2.5pc;
-  height: 2.5pc; // 10% of the viewport width
-  position: relative;
-  left: 1.2pc;
-  top: 0.7pc;
+  width: 10vw;
+  height: 5vh;
+  // border: 1px solid #000;
 }
 
 .ai-scan {

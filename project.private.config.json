@@ -9,8 +9,22 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/camera/index",
+          "pathName": "pages/camera/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/home/index",
+          "pathName": "pages/home/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/test/index",
-          "pathName": "pages/test/index",
+          "pathName": "pages/home/index",
           "query": "",
           "launchMode": "default",
           "scene": null

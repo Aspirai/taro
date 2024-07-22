@@ -42,7 +42,7 @@ const Index = () => {
       {/* 顶部栏 */}
       <View className='top-bar'>
         <Button className='login-button'>
-          <Text>
+          <Text className='text' style={{fontSize:"12px"}}>
             登录
           </Text>
         </Button>
@@ -53,32 +53,22 @@ const Index = () => {
 
       {/* 欢迎信息 */}
       <View className='welcome'>
-        <Text className='welcome-text' style={{top:"1.5pc",left:"-3pc"}}>HI，你好</Text>
-        <Text className='sub-text' style={{top:"3pc",left:"-8.8pc"}}>美好的一天从健康生活开始</Text>
+        <View className='welcome-text'>HI，你好</View>
+        <View className='sub-text'>美好的一天从健康生活开始</View>
       </View>
 
       {/* 功能按钮 */}
       <View className='features'>
         <View className='feature1'>
           <View className='feature-icon ai-scan'></View>
-          <Text className='feature-text' style={{ left: "3pc", top: "-2.2pc" }}>AI扫描</Text>
-          <Text className='sub-text' style={{ left: "-0.1pc", top: "-0.9pc" }}>1型学校 院外照护</Text>
+          <Text className='feature-text' >AI扫描</Text>
+          <Text className='core-sub-text'>1型学校 院外照护</Text>
         </View>
         <View className='feature2'>
           <View className='feature-icon knowledge-search'></View>
-          <Text className='feature-text' style={{ left: "3.6pc", top: "-2.2pc" }}>知识速查</Text>
-          <Text className='sub-text' style={{ left: "-0.4pc", top: "-0.8pc" }}>控糖效果 一目了然</Text>
+          <Text className='feature-text'>知识速查</Text>
+          <Text className='core-sub-text'>控糖效果 一目了然</Text>
         </View>
-        {/* <View className='feature3'>
-          <View className='feature-icon quick-doctor'></View>
-          <Text className='feature-text'>快速问医</Text>
-          <Text className='sub-text'></Text>
-        </View>
-        <View className='feature4'>
-          <View className='feature-icon medication-tracker'></View>
-          <Text className='feature-text'>血糖用药</Text>
-          <Text className='sub-text'>控糖效果 一目了然</Text>
-        </View> */}
       </View>
     </View>
   );

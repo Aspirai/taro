@@ -1,0 +1,47 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ccc;
+}
+
+#camera {
+  position: absolute;
+  background-color: #000000;
+}
+
+.controls {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.photograph {
+  // 圆角
+  border-radius: 50%;
+  width: 20vw;
+  height: 20vw;
+  position: fixed;
+  left: 40vw;
+  bottom: 5vh;
+
+  background-color: white;
+  background-clip: padding-box;
+  border: none;
+
+  outline: none; // 去掉点击时的边框
+  padding: 0%;
+  margin: 0%;
+
+}
+
+.test {
+  height: 20vw;
+  width: 20vw;
+  background-color: white;
+  border-radius: 50%;
+}

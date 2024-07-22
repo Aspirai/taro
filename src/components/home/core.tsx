@@ -7,7 +7,7 @@ const HomeCore: React.FC = () => {
     <View className="home-core">
       <View className='feature'>
         <View className='ai-scan'>
-          <Image src='https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png' mode="scaleToFill"/>
+          {/* <Image src='https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png' mode="scaleToFill"/> */}
           <Image src='' mode="scaleToFill"/>
         </View>
         <Text className='feature-text'>AI扫描</Text>
