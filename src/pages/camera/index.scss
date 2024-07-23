@@ -39,9 +39,12 @@
 
 }
 
-.test {
-  height: 20vw;
-  width: 20vw;
-  background-color: white;
-  border-radius: 50%;
+.test{
+  border: 1px solid #000;
+  position: absolute;
+  bottom: 20vh;
+  left: 10vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
