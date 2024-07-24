@@ -33,11 +33,12 @@ const Index = () => {
           </Text>
         </Button>
         <View className='headPortrait-icon'>
-          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/home/headPortrait_icon.png')} />
+          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/home/user.svg')} />
         </View>
       </View>
 
       {/* 欢迎信息 */}
+
       <View className='welcome'>
         <View className='welcome-text'>HI，你好</View>
         <View className='sub-text'>美好的一天从健康生活开始</View>

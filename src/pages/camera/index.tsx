@@ -3,7 +3,6 @@ import { View, Camera, Button } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
 import { useState } from 'react'
-import { url } from 'inspector'
 
 
 
@@ -16,7 +15,6 @@ const Index = () => {
         setDevicePosition(devicePosition === 'back' ? 'front' : 'back')
     }
 
-    //#region
     // 请求授权
     const requestWritePhotosAlbumPermission = async () => {
         try {
@@ -62,8 +60,9 @@ const Index = () => {
             });
         }
     };
-    
 
+
+    // 选择媒体文件来源
     const handleChooseMedia = () => {
         Taro.chooseMedia({
             count: 1, // 最多可以选择的文件个数
@@ -76,6 +75,7 @@ const Index = () => {
                 // 处理返回的文件，如上传到服务器或展示在页面上
                 console.log('临时文件路径列表:', res.tempFiles);
 
+                //#region 
                 // url:""
                 // Taro.uploadFile({
                 //     url: 'https://example.weixin.qq.com/upload', // 开发者服务器的 url
@@ -91,6 +91,7 @@ const Index = () => {
                 //         console.log('上传失败:', err);
                 //     }
                 // });
+                //#endregion
 
 
                 // 循环输出临时文件路径中每一个文件的路径
@@ -114,11 +115,9 @@ const Index = () => {
         });
     };
 
-    //#endregion
 
     return (
         <View className="index">
-            //#region 
             {/* <Camera
                 mode='normal' // 拍照模式，有效值为normal, scanCode
                 resolution='medium'  // 分辨率，有效值为low, medium, high, medium
@@ -128,7 +127,6 @@ const Index = () => {
                 id="camera"
                 devicePosition={devicePosition}
                 style={{ height: "100vh" }} /> */}
-            //#endregion
             <View className="controls">
                 <View className='photograph' onClick={handleChooseMedia} />
                 <View className='test' id='test' style={{width:"300px",height:"300px"}}></View>

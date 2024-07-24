@@ -6,7 +6,7 @@ import './index.scss';
 const Index: React.FC = () => {
   return (
     <View className="index">
-      <Text>Hello</Text>
+      <Text>Hello issue!</Text>
     </View>
   );
 };

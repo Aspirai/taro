@@ -1,7 +1,7 @@
 .index {
   padding: 10px;
   width: 98vw;
-  background-image: url('../../assets/home/bg.png');
+  background-image: url('../../assets/home/bg@3x.png');
   // 设置背景图片填充整个元素
   background-size: cover;
   // 设置背景图片位置
@@ -91,7 +91,7 @@
 
 .feature1 {
   width: 50%;
-  background: url('../../assets/home/ai_scan_background.png') no-repeat center;
+  background: url('../../assets/home/ai_scan_background@3x.png') no-repeat center;
   background-size: cover;
 
   // position: relative;
@@ -102,7 +102,7 @@
 
 .feature2 {
   width: 50%;
-  background: url('../../assets/home/knowledge_search_background.png') no-repeat center;
+  background: url('../../assets/home/knowledge_search_background@3x.png') no-repeat center;
   background-size: cover;
   // position: relative;
   // margin-left: -11px;
@@ -136,11 +136,11 @@
 }
 
 .ai-scan {
-  background: url('../../assets/home/ai_scan_icon.png') no-repeat center;
+  background: url('../../assets/home/ai_scan_icon@3x.png') no-repeat center;
   background-size: cover;
 }
 
 .knowledge-search {
-  background: url('../../assets/home/knowledge_search_icon.png') no-repeat center;
+  background: url('../../assets/home/knowledge_search_icon@3x.png') no-repeat center;
   background-size: cover;
 }

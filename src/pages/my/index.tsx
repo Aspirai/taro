@@ -11,7 +11,7 @@ const Index = () => {
       <View className='head'>
         <View className='headPortrait-icon'>
           {/* <Image style={{ width: "10vw", height: "10vw" }} src='../../assets/home/'/> */}
-          <Image style={{ width: "12vw", height: "12vw" }} src={require('../../assets/home/headPortrait_icon@3x.png')} />
+          <Image style={{ width: "12vw", height: "12vw" }} src={require('../../assets/home/user.svg')} />
         </View>
         <View className='text' style={{ fontSize: "20px",display:"flex",alignItems:"center" }}>
           登录
