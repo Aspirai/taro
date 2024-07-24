@@ -3,6 +3,7 @@ import { View, Camera, Button } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
 import { useState } from 'react'
+import { url } from 'inspector'
 
 
 
@@ -75,6 +76,23 @@ const Index = () => {
                 // 处理返回的文件，如上传到服务器或展示在页面上
                 console.log('临时文件路径列表:', res.tempFiles);
 
+                // url:""
+                // Taro.uploadFile({
+                //     url: 'https://example.weixin.qq.com/upload', // 开发者服务器的 url
+                //     filePath: res.tempFiles[0].tempFilePath, // 要上传文件资源的路径
+                //     name: 'file', // 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
+                //     formData: { // HTTP 请求中其他额外的 form data
+                //         'user': 'test'
+                //     },
+                //     success: (res) => {
+                //         console.log('上传成功:', res);
+                //     },
+                //     fail: (err) => {
+                //         console.log('上传失败:', err);
+                //     }
+                // });
+
+
                 // 循环输出临时文件路径中每一个文件的路径
                 res.tempFiles.forEach((item) => {
                     // 提示当前文件索引和当前文件路径
@@ -87,7 +105,7 @@ const Index = () => {
                     test.style.backgroundImage = `url(${res.tempFiles[0].tempFilePath})`;
                 }
                 // 保存图片到相册
-                // saveImageToAlbum(res.tempFiles[0].tempFilePath);
+                saveImageToAlbum(res.tempFiles[0].tempFilePath);
 
             },
             fail: (err) => {
@@ -100,6 +118,7 @@ const Index = () => {
 
     return (
         <View className="index">
+            //#region 
             {/* <Camera
                 mode='normal' // 拍照模式，有效值为normal, scanCode
                 resolution='medium'  // 分辨率，有效值为low, medium, high, medium
@@ -108,7 +127,8 @@ const Index = () => {
                 // outputDimension='1080p' // 输出分辨率，有效值为1080p, 720p, 480p, 默认720
                 id="camera"
                 devicePosition={devicePosition}
-                style={{ height: "20vh" }} /> */}
+                style={{ height: "100vh" }} /> */}
+            //#endregion
             <View className="controls">
                 <View className='photograph' onClick={handleChooseMedia} />
                 <View className='test' id='test' style={{width:"300px",height:"300px"}}></View>

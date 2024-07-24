@@ -1,53 +1,39 @@
-
-//#region 导入
-
-/* import { Component, PropsWithChildren } from "react";
-// 导入组件库
-import { View, Text, Button, Navigator } from "@tarojs/components";
-// 状态管理
-import { observer, inject } from "mobx-react";
-
-// @inject('store') 用于注入状态管理
-@inject("store")
-@observer
-class Index extends Component {
-  render() {
-    return (
-      <View className='index'>
-        <View className="header">
-          
-        </View>
-        <View className="main">
-
-        </View>
-        <View className="footer">
-
-        </View>
-      </View>
-    );
-  }
-}
-
-export default Index; */
-// #endregion
-
+import { useState } from 'react';
+import { View, Text, Image, Button } from '@tarojs/components';
+import LoginModal from '../../components/register/index';
 import Taro from '@tarojs/taro';
-import { View, Text, Image, Input, Button } from '@tarojs/components';
 import './index.scss';
-import { win32 } from 'path';
 
 const Index = () => {
+
+  // 跳转路由到camera页面
+  const handleJumpToCamera = () => {
+    Taro.navigateTo({
+      url: '/pages/camera/index',
+    });
+  };
+
+  const [isLoginModalVisible, setLoginModalVisible] = useState(false);
+
+  const openLoginModal = () => {
+    setLoginModalVisible(true);
+  };
+
+  const closeLoginModal = () => {
+    setLoginModalVisible(false);
+  };
+
   return (
     <View className='index'>
       {/* 顶部栏 */}
       <View className='top-bar'>
-        <Button className='login-button'>
-          <Text className='text' style={{fontSize:"12px"}}>
+        <Button className='login-button' onClick={openLoginModal}>
+          <Text className='text' style={{ fontSize: "12px" }}>
             登录
           </Text>
         </Button>
         <View className='headPortrait-icon'>
-          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/headPortrait-icon.png')} />
+          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/home/headPortrait_icon.png')} />
         </View>
       </View>
 
@@ -59,8 +45,8 @@ const Index = () => {
 
       {/* 功能按钮 */}
       <View className='features'>
-        <View className='feature1'>
-          <View className='feature-icon ai-scan'></View>
+        <View className='feature1' onClick={handleJumpToCamera}>
+          <View className='feature-icon ai-scan' ></View>
           <Text className='feature-text' >AI扫描</Text>
           <Text className='core-sub-text'>1型学校 院外照护</Text>
         </View>
@@ -70,6 +56,9 @@ const Index = () => {
           <Text className='core-sub-text'>控糖效果 一目了然</Text>
         </View>
       </View>
+
+      {/* 登录弹窗 */}
+      <LoginModal isVisible={isLoginModalVisible} onClose={closeLoginModal} />
     </View>
   );
 };
