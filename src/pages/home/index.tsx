@@ -33,7 +33,7 @@ const Index = () => {
           </Text>
         </Button>
         <View className='headPortrait-icon'>
-          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/home/user.svg')} />
+          <Image style={{ width: "10vw", height: "10vw" }} src={require('../../assets/home/user.png')} />
         </View>
       </View>
 
