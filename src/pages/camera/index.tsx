@@ -2,12 +2,13 @@
 import { View, Camera, Button } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
-import { useState } from 'react'
+import React,{ useState } from 'react'
 
 
 
 
 const Index = () => {
+
     const [devicePosition, setDevicePosition] = useState<'front' | 'back'>('back')
     const cameraContext = Taro.createCameraContext()
 
@@ -61,13 +62,14 @@ const Index = () => {
         }
     };
 
+    const [imagePath, setImagePath] = useState('');    
 
     // 选择媒体文件来源
     const handleChooseMedia = () => {
         Taro.chooseMedia({
-            count: 1, // 最多可以选择的文件个数
+            count: 1, // 最多可以选择20文件个数---4~5
             mediaType: ['image'], // 选择媒体文件的类型
-            sourceType: ['album','camera'], // 选择图片的来源
+            sourceType: ['album', 'camera'], // 选择图片的来源
             sizeType: ['original'], // 选择图片的尺寸----original 原图，compressed 压缩图，默认二者都有
             // maxDuration: 30, // 拍摄视频最长拍摄时间，单位秒
             camera: 'back', // 后置或前置摄像头，值为front, back
@@ -75,10 +77,13 @@ const Index = () => {
                 // 处理返回的文件，如上传到服务器或展示在页面上
                 console.log('临时文件路径列表:', res.tempFiles);
 
+                // 上传文件到开发者服务器
                 //#region 
-                // url:""
+                // const url ="https://623f9398.r26.cpolar.top/upload/"  // 开发者服务器的 url
+                // const url ="https://623f9398.r26.cpolar.top/upload/"
+
                 // Taro.uploadFile({
-                //     url: 'https://example.weixin.qq.com/upload', // 开发者服务器的 url
+                //     url: url, // 开发者服务器的 url
                 //     filePath: res.tempFiles[0].tempFilePath, // 要上传文件资源的路径
                 //     name: 'file', // 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
                 //     formData: { // HTTP 请求中其他额外的 form data
@@ -100,14 +105,17 @@ const Index = () => {
                     console.log('当前文件索引:', res.tempFiles.indexOf(item) + 1, '当前文件路径:', item.tempFilePath);
                 });
                 console.log('媒体类型:', res.type);
-                // 展示图片到页面上
-                const test = document.getElementById('test');
-                if (test) {
-                    test.style.backgroundImage = `url(${res.tempFiles[0].tempFilePath})`;
-                }
-                // 保存图片到相册
-                saveImageToAlbum(res.tempFiles[0].tempFilePath);
 
+                // 展示图片到页面上
+                const thumbnail = document.getElementById('thumbnail');
+                if (thumbnail) {
+                    thumbnail.style.backgroundImage = `url(${res.tempFiles[0].tempFilePath})`;
+                    // 存储临时路径
+                    setImagePath(res.tempFiles[0].tempFilePath);
+                }
+
+                // 保存图片到相册
+                // saveImageToAlbum(res.tempFiles[0].tempFilePath);
             },
             fail: (err) => {
                 console.log('选择媒体失败:', err);
@@ -115,6 +123,18 @@ const Index = () => {
         });
     };
 
+    // 预览图片
+    const previewImage = async (imagePath) => {
+        try {
+            const res = await Taro.previewImage({
+                urls: [imagePath],
+            });
+            console.log('预览成功:', res);
+        } catch (err) {
+            console.log('预览失败:', err);
+            console.log(imagePath);
+        }
+    };
 
     return (
         <View className="index">
@@ -129,12 +149,11 @@ const Index = () => {
                 style={{ height: "100vh" }} /> */}
             <View className="controls">
                 <View className='photograph' onClick={handleChooseMedia} />
-                <View className='test' id='test' style={{width:"300px",height:"300px"}}></View>
+                <View className='thumbnail' id='thumbnail' onClick={previewImage}></View>
                 {/* <View onClick={handleSwitchCamera}>切换摄像头</View> */}
             </View>
         </View>
     )
-
 }
 
 export default Index

@@ -2,7 +2,7 @@
 import { Component, PropsWithChildren } from 'react'
 import { Provider } from 'mobx-react'
 
-import counterStore from './store/counter'
+import counterStore from './store/camera-path'
 import homeStore from './store/home'
 import crossTalkStore from './store/cross_talk'
 

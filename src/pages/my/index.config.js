@@ -1,7 +1,7 @@
 // 用于配置页面的一些属性，如导航条背景色、标题、是否允许下拉刷新等
 
 export default {
-  navigationBarTitleText: '拍照',
+  navigationBarTitleText: '个人中心',
   usingComponents: {},
 }
 

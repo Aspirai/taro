@@ -16,4 +16,3 @@ const crossTalkStore = observable({
 })
 
 export default crossTalkStore;
- 

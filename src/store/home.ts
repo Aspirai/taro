@@ -1,4 +1,4 @@
-import { observable } from "mobx";
+/* import { observable } from "mobx";
 
 // observable 用于定义一个可观察的对象，这个对象的属性发生变化时，会自动触发视图更新
 const homeStore = observable({
@@ -16,4 +16,5 @@ const homeStore = observable({
     },
 })
 
-export default homeStore;
+export default homeStore; */
+
