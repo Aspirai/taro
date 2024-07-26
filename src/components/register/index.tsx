@@ -27,43 +27,51 @@ const LoginModal = ({ isVisible, onClose }) => {
     <View className='login-modal'>
       <View className='modal-content'>
         <View className='close-button' onClick={onClose}>×</View>
-        <Image className='avatar' src='path/to/avatar.png' />
-        <Text className='register-welcome-text'>HI, 欢迎登录</Text>
+        <View className='top-bar'>
+          <Image className='avatar' src='../../assets/register/logo_icon.png' />
+          <View className='icon-strip'></View>
+          <View className='register-welcome-text'>
+            <Text className='register-welcome-text-top'>HI,</Text>
+            <Text className='register-welcome-text-bottom'>欢迎登录</Text>
+          </View>
+        </View>
         <View className='input-group'>
           <Input
             type='number'
             placeholder='输入手机号'
-            value={phoneNumber}
-            onInput={handlePhoneNumberChange}
+          // value={phoneNumber}
+          // onInput={handlePhoneNumberChange}
           />
         </View>
-        <View className='input-group'>
+        <View className='input-group-code'>
           <Input
             placeholder='输入验证码'
-            value={verificationCode}
-            onInput={handleVerificationCodeChange}
+          // value={verificationCode}
+          // onInput={handleVerificationCodeChange}
           />
           <Button className='code-button'>获取验证码</Button>
         </View>
         <View className='input-group'>
           <Input
             placeholder='输入邀请码'
-            value={inviteCode}
-            onInput={handleInviteCodeChange}
+          value={inviteCode}
+          onInput={handleInviteCodeChange}
           />
         </View>
         <Button className='login-button'>登录</Button>
-        <Checkbox value='false' className='agreement'>
-          我已阅读并同意
-          <Text className='link'>《使用条款》</Text>和
-          <Text className='link'>《隐私政策》</Text>
-        </Checkbox>
+        <View className='agreement-bottom'>
+          <Checkbox value='false' className='agreement'>
+            我已阅读并同意
+            <Text className='link'>《使用条款》</Text>和
+            <Text className='link'>《隐私政策》</Text>
+          </Checkbox>
+        </View>
         <View className='third-party-login'>
           <Text>使用第三方登录</Text>
           <View className='icons'>
-            <Image src='path/to/wechat.png' />
-            <Image src='path/to/qq.png' />
-            <Image src='path/to/apple.png' />
+            <Image src='../../assets/register/wechat_icon@3x.png' />
+            <Image src='../../assets/register/qq_icon@3x.png' />
+            <Image src='../../assets/register/apple_icon@3x.png' />
           </View>
         </View>
       </View>
