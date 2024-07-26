@@ -62,7 +62,7 @@ const Index = () => {
         }
     };
 
-    const [imagePath, setImagePath] = useState('');    
+    const [imagePath, setImagePath] = useState('');
 
     // 选择媒体文件来源
     const handleChooseMedia = () => {
@@ -124,7 +124,7 @@ const Index = () => {
     };
 
     // 预览图片
-    const previewImage = async (imagePath) => {
+    const previewImage = async () => {
         try {
             const res = await Taro.previewImage({
                 urls: [imagePath],

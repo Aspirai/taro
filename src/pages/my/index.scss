@@ -1,16 +1,131 @@
-.index{
-  border: 1px solid #000;
+.my-container {
+  // 740px
+  // padding: 20px;
+  background-color: #f0f0f0;
+  height: 100vh;
+  // border: 1px solid #000;
 }
 
-.head{
-    display: flex;
-    border: 1px solid #000;
+.my-header {
+  // 170px
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  // background-color: #14ce6f;
+  height: 20%;
+  position: relative;
+  // 子元素水平居中
+  justify-content: center;
+  // border: 1px solid #000;
 }
 
-.headPortrait-icon{
-  border: 1px solid #000;
+.my-header-top {
+  width: 100%;
+  height: 70%;
+  position: absolute;
+  top: 0;
+  background-color: #14ce6f;
 }
 
-.text{
-  border: 1px solid #000;
+.my-header-middle {
+  background-color: #fff;
+  border-radius: 18px;
+  // border-top-left-radius: 12px;
+  // border-top-right-radius: 12px;
+  width: 92%;
+  height: 60%;
+  position: absolute;
+  bottom: 0;
+
+  // display: flex; 使得子元素水平排列 align-items: center; 使得子元素垂直居中
+  // justify-content: space-between; 使得子元素左右对齐
+  display: flex;  //是否被视为块或者内联元素以及用于子元素的布局模型取决于display属性的值
+}
+
+.my-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  // 垂直居中 相对于父元素
+  align-self: center;
+  margin-left: 3%;
+  margin-bottom: 1%;
+  // border: 1px solid #000;
+}
+
+.my-user-info {
+  margin-left: 4%;
+  margin-bottom: 2%;
+  font-size: 1.5em;
+  // 字体间距
+  letter-spacing: 1px;
+  align-self: center;
+  display: flex;
+  // 解释: flex-direction: column; 使得子元素垂直排列
+  flex-direction: column;
+  // border: 1px solid #000;
+}
+
+.my-name {
+  // font-weight: bold;
+  margin: 5px;
+}
+
+.my-role {
+  margin: 5px;
+  font-size: 20px;
+  color: #14ce6f;
+}
+
+
+.my-container-bottom {
+  width: 92%;
+  margin-left: 4%;
+  // overflow: hidden;
+  // border: 1px solid #000;
+}
+
+.my-details {
+  border-radius: 24px;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  line-height: 60px;
+}
+
+.my-detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.my-label {
+  // 设置行高
+  margin: 10px;
+  color: #888;
+}
+
+.my-value {
+  margin: 10px;
+  color: #888;
+}
+
+.my-menu {
+  border-radius: 24px;
+  line-height: 60px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.my-menu-item {
+  color: #888;
+  font-size: 1em;
+  margin: 10px;
+  padding: 15px 0;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.my-menu-text {
+  // font-size: 1em;
 }

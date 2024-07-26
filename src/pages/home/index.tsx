@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { View, Text, Image, Button } from '@tarojs/components';
-import LoginModal from '../../components/register/index';
 import Taro from '@tarojs/taro';
 import './index.scss';
 
@@ -13,20 +11,11 @@ const Index = () => {
     });
   };
 
-  const [isLoginModalVisible, setLoginModalVisible] = useState(false);
-
-  const openLoginModal = () => {
-    setLoginModalVisible(true);
-  };
-
-  const closeLoginModal = () => {
-    setLoginModalVisible(false);
-  };
 
   return (
     <View className='index'>
       {/* 顶部栏 */}
-      <View className='top-bar'>
+{/*       <View className='top-bar'>
         <Button className='login-button' onClick={openLoginModal}>
           <Text className='text' style={{ fontSize: "12px" }}>
             登录
@@ -35,7 +24,7 @@ const Index = () => {
         <View className='headPortrait-icon'>
           <Image style={{ width: "10vw", height: "10vw", right: "10px", position: "relative" }} src={require('../../assets/home/user.png')} />
         </View>
-      </View>
+      </View> */}
 
       {/* 欢迎信息 */}
 
@@ -58,8 +47,6 @@ const Index = () => {
         </View>
       </View>
 
-      {/* 登录弹窗 */}
-      <LoginModal isVisible={isLoginModalVisible} onClose={closeLoginModal} />
     </View>
   );
 };
