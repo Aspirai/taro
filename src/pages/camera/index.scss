@@ -1,52 +1,110 @@
-.index {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100vw;
+.form-container {
+  padding: 20px;
+  // background-color: #f9f9f9;
+  border-radius: 10px;
   height: 100vh;
-  background-color: #ccc;
+  position: relative;
+  // border: 1px solid #000;
 }
 
-#camera {
+.form-item {
+  display: flex;
+  padding: 15px 0;
+  align-items: center;
+  border-bottom: 2px solid #f3f3f3;
+  // border: 1px solid #000;
+}
+
+.label {
+  flex: 0 0 30px;
+  font-size: 1em;
+  color: #333;
+}
+
+.input-group {
+  margin-left: auto;
+  display: flex;
+  // 子元素右对齐
+  justify-content: flex-end;
+  align-items: center;
+  // border: 1px solid #000;
+}
+
+.input {
+  // flex的值为1，表示占据剩余空间；第一个0表示不缩放，第二个0表示不基于内容的大小，第三个表示不占据剩余空间，即固定大小
+  flex: 0 0 150px;
+  font-size: 1em;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.unit {
+  flex: 0 0 40px;
+  font-size: 1em;
+  color: #666;
+}
+
+.add-more {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.add-more-text {
+  font-size: 1em;
+  color: #28a745;
+  cursor: pointer;
+}
+
+// bottom
+.bottom-bar {
   position: absolute;
-  background-color: #000000;
+  width: 94%;
+  bottom: 100px;
+  // border: 1px solid #000;
 }
 
-.controls {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+.thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  // border: 1px solid #000;
 }
 
-.photograph {
-  // 圆角
-  border-radius: 50%;
-  width: 20vw;
-  height: 20vw;
-  position: fixed;
-  left: 40vw;
-  bottom: 5vh;
+.image {
+  width: 120px;
+  height: 120px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  // overflow: hidden;
+  // 设置背景图片放大填充
+  background-size: contain;
+  // background-position: center;
+  // border: 1px solid #000;
+}
 
-  background-color: white;
-  background-clip: padding-box;
+.add-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
   border: none;
-
-  outline: none;    // 去掉点击时的边框
-  padding: 0%;
-  margin: 0%;
-
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.thumbnail{
-  width: 20vw;
-  height: 20vw;
-  border: 1px solid #000;
+.close-button {
+  height: 30px;
+  width: 30px;
   position: absolute;
-  bottom: 5vh;
-  left: 10vw;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin-left: -38px;
+}
+
+.tip{
+  position: absolute;
+  top: -30px;
 }

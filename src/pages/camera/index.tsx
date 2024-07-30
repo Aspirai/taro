@@ -1,20 +1,15 @@
 // import { ComponentType } from 'react'
-import { View, Camera, Button } from '@tarojs/components'
+import { View, Input, Text, Button, Image, Swiper, SwiperItem, Block } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 
 
 
 
 const Index = () => {
-
-    const [devicePosition, setDevicePosition] = useState<'front' | 'back'>('back')
-    const cameraContext = Taro.createCameraContext()
-
-    const handleSwitchCamera = () => {
-        setDevicePosition(devicePosition === 'back' ? 'front' : 'back')
-    }
+    const [imagePath, setImagePath] = useState('');
+    const [imagePaths, setImagePaths] = useState<string[]>([]);
 
     // 请求授权
     const requestWritePhotosAlbumPermission = async () => {
@@ -62,12 +57,10 @@ const Index = () => {
         }
     };
 
-    const [imagePath, setImagePath] = useState('');
-
     // 选择媒体文件来源
     const handleChooseMedia = () => {
         Taro.chooseMedia({
-            count: 1, // 最多可以选择20文件个数---4~5
+            count: 5, // 最多可以选择20文件个数---4~5
             mediaType: ['image'], // 选择媒体文件的类型
             sourceType: ['album', 'camera'], // 选择图片的来源
             sizeType: ['original'], // 选择图片的尺寸----original 原图，compressed 压缩图，默认二者都有
@@ -80,24 +73,26 @@ const Index = () => {
                 // 上传文件到开发者服务器
                 //#region 
                 // const url ="https://623f9398.r26.cpolar.top/upload/"  // 开发者服务器的 url
-                // const url ="https://623f9398.r26.cpolar.top/upload/"
+                const url = "http://127.0.0.1:4523/m1/4874230-4530188-default/upload/"
 
-                // Taro.uploadFile({
-                //     url: url, // 开发者服务器的 url
-                //     filePath: res.tempFiles[0].tempFilePath, // 要上传文件资源的路径
-                //     name: 'file', // 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
-                //     formData: { // HTTP 请求中其他额外的 form data
-                //         'user': 'test'
-                //     },
-                //     success: (res) => {
-                //         console.log('上传成功:', res);
-                //     },
-                //     fail: (err) => {
-                //         console.log('上传失败:', err);
-                //     }
-                // });
+                Taro.uploadFile({
+                    url: url, // 开发者服务器的 url
+                    filePath: res.tempFiles[0].tempFilePath, // 要上传文件资源的路径
+                    name: 'file', // 文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
+                    formData: { // HTTP 请求中其他额外的 form data
+                        'user': 'test'
+                    },
+                    success: (res) => {
+                        console.log('上传成功:', res);
+                    },
+                    fail: (err) => {
+                        console.log('上传失败:', err);
+                    }
+                });
                 //#endregion
 
+                const newImagePaths = res.tempFiles.map(file => file.tempFilePath);
+                setImagePaths(newImagePaths);
 
                 // 循环输出临时文件路径中每一个文件的路径
                 res.tempFiles.forEach((item) => {
@@ -124,10 +119,17 @@ const Index = () => {
     };
 
     // 预览图片
-    const previewImage = async () => {
+    const previewImage = async (index) => {
+        if (!imagePaths.length) {
+            Taro.showToast({
+                title: '请先选择图片',
+                icon: 'none',
+            });
+            return;
+        }
         try {
             const res = await Taro.previewImage({
-                urls: [imagePath],
+                urls: [imagePaths[index]],
             });
             console.log('预览成功:', res);
         } catch (err) {
@@ -136,21 +138,57 @@ const Index = () => {
         }
     };
 
+    // 删除图片
+    const deleteImage = (index) => {
+        // 删除指定索引的图片
+        const newImagePaths = imagePaths.filter((_, i) => i !== index); //filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素
+        setImagePaths(newImagePaths);
+    }
+
     return (
-        <View className="index">
-            {/* <Camera
-                mode='normal' // 拍照模式，有效值为normal, scanCode
-                resolution='medium'  // 分辨率，有效值为low, medium, high, medium
-                flash='auto' // 闪光灯，有效值为auto, on, off, 默认auto
-                frameSize='medium' // 扫码框的大小，有效值为small, medium, large, 默认medium
-                // outputDimension='1080p' // 输出分辨率，有效值为1080p, 720p, 480p, 默认720
-                id="camera"
-                devicePosition={devicePosition}
-                style={{ height: "100vh" }} /> */}
-            <View className="controls">
-                <View className='photograph' onClick={handleChooseMedia} />
-                <View className='thumbnail' id='thumbnail' onClick={previewImage}></View>
-                {/* <View onClick={handleSwitchCamera}>切换摄像头</View> */}
+        <View className='form-container'>
+            <View className='form-item'>
+                <Text className='label'>白</Text>
+                <View className='input-group'>
+                    <Input className='input' type='text' />
+                    <Text className='unit'>^g/L</Text>
+                </View>
+            </View>
+            <View className='form-item'>
+                <Text className='label'>粒</Text>
+                <View className='input-group'>
+                    <Input className='input' type='text' />
+                    <Text className='unit'>^g/L</Text>
+                </View>
+            </View>
+            <View className='form-item'>
+                <Text className='label'>红</Text>
+                <View className='input-group'>
+                    <Input className='input' type='text' />
+                    <Text className='unit'>^g/L</Text>
+                </View>
+            </View>
+            <View className='form-item'>
+                <Text className='label'>板</Text>
+                <View className='input-group'>
+                    <Input className='input' type='text' />
+                    <Text className='unit'>^g/L</Text>
+                </View>
+            </View>
+            <View className='add-more'>
+                <Text className='add-more-text'>+ 我要添加更多录入项</Text>
+            </View>
+            <View className='bottom-bar'>
+                <View className='thumbnail'>
+                    {imagePaths.length > 0 && <View className='tip'>点击图片预览</View>}
+                    {imagePaths.map((path, index) => (
+                        <View className='1'>
+                            <Image className='image' src={path} mode='aspectFit' key={index} onClick={() => previewImage(index)}/>
+                            <Image className='close-button' src={require('../../assets/camera/close.png')} onClick={() => deleteImage(index)} />
+                        </View>
+                    ))}
+                </View>
+                <Button className='add-button' onClick={handleChooseMedia}>智能添加</Button>
             </View>
         </View>
     )

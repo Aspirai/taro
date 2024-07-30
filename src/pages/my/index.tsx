@@ -19,16 +19,6 @@ const Index = () => {
 
 
   return (
-    /*     <View className='my-index'>
-          <View className='my-head'>
-            <View className='my-headPortrait-icon'>
-              <Image style={{ width: "12vw", height: "12vw" }} src={require('../../assets/home/user.png')} />
-            </View>
-            <View className='my-text' style={{ fontSize: "20px",display:"flex",alignItems:"center" }}>
-              登录
-            </View>
-          </View>
-        </View> */
     <View className='my-container'>
       <View className='my-header'>
         <View className='my-header-top'>

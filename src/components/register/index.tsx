@@ -28,7 +28,7 @@ const LoginModal = ({ isVisible, onClose }) => {
       <View className='modal-content'>
         <View className='close-button' onClick={onClose}>×</View>
         <View className='top-bar'>
-          <Image className='avatar' src='../../assets/register/logo_icon.png' />
+          <Image className='avatar' src={require('../../assets/register/logo_icon@3x.png')} />
           <View className='icon-strip'></View>
           <View className='register-welcome-text'>
             <Text className='register-welcome-text-top'>HI,</Text>
@@ -39,17 +39,17 @@ const LoginModal = ({ isVisible, onClose }) => {
           <Input
             type='number'
             placeholder='输入手机号'
-          // value={phoneNumber}
-          // onInput={handlePhoneNumberChange}
+          value={phoneNumber}
+          onInput={handlePhoneNumberChange}
           />
         </View>
         <View className='input-group-code'>
           <Input
             placeholder='输入验证码'
-          // value={verificationCode}
-          // onInput={handleVerificationCodeChange}
+          value={verificationCode}
+          onInput={handleVerificationCodeChange}
           />
-          <Button className='code-button'>获取验证码</Button>
+          <View className='code-button'>获取验证码</View>
         </View>
         <View className='input-group'>
           <Input
@@ -69,9 +69,7 @@ const LoginModal = ({ isVisible, onClose }) => {
         <View className='third-party-login'>
           <Text>使用第三方登录</Text>
           <View className='icons'>
-            <Image src='../../assets/register/wechat_icon@3x.png' />
-            <Image src='../../assets/register/qq_icon@3x.png' />
-            <Image src='../../assets/register/apple_icon@3x.png' />
+            <Image src={require('../../assets/register/wechat_icon@3x.png')} />
           </View>
         </View>
       </View>
