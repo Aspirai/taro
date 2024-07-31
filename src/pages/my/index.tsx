@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { View, Text, Image } from '@tarojs/components';
 import './index.scss';
 import LoginModal from '../../components/register';
+import Taro from '@tarojs/taro';
 
 
 const Index = () => {
@@ -17,6 +18,10 @@ const Index = () => {
     setLoginModalVisible(false);
   };
 
+  const avatarUrl = Taro.getStorageSync('avatarUrl');
+  const nickName = Taro.getStorageSync('nickName');
+
+
 
   return (
     <View className='my-container'>
@@ -24,14 +29,12 @@ const Index = () => {
         <View className='my-header-top'>
         </View>
         <View className='my-header-middle'>
-          <Image
-            className='my-avatar'
-            src='https://via.placeholder.com/80'
-          // alt='avatar'
-          />
+          {avatarUrl ? (<Image className='my-avatar' src={avatarUrl} />) : (<Image className='my-avatar' src='https://via.placeholder.com/80' />)}
           <View className='my-user-info'>
-            <Text className='my-name' onClick={openLoginModal}>登录</Text>
-            {/* <Text className='my-role'>护理医师</Text> */}
+            {/* 若nickName为空，则显示登录，不为空，则不显示登录 */}
+            {nickName ? (<Text className='my-name'>{nickName}</Text>) : (<Text className='my-name' onClick={openLoginModal}>登录</Text>)}
+            {/* <Text className='my-name'>{nickName}</Text> */}
+            {/* <Text className='my-name' onClick={openLoginModal}>登录</Text> */}
           </View>
         </View>
       </View>

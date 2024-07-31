@@ -91,6 +91,8 @@ const Index = () => {
                 });
                 //#endregion
 
+                // 设置图片路径 map() 方法创建一个新数组, 其结果是该数组中的每个元素都调用一个提供的函数后返回的结果
+                // file => file.tempFilePath 表示将每一个文件对象的 tempFilePath 属性提取出来，组成一个新的数组
                 const newImagePaths = res.tempFiles.map(file => file.tempFilePath);
                 setImagePaths(newImagePaths);
 
