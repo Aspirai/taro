@@ -1,9 +1,9 @@
 
+import Taro from '@tarojs/taro';
 import { useState } from 'react';
 import { View, Text, Image } from '@tarojs/components';
+import LoginModal from '../../components/register/RegisterPop';
 import './index.scss';
-import LoginModal from '../../components/register';
-import Taro from '@tarojs/taro';
 
 
 const Index = () => {
@@ -70,7 +70,7 @@ const Index = () => {
       </View>
 
       {/* 登录弹窗 */}
-      <LoginModal isVisible={isLoginModalVisible} onClose={closeLoginModal} />
+      <LoginModal isVisible={isLoginModalVisible} onClose={closeLoginModal} initialCountdown={60} />
     </View>
   );
 };

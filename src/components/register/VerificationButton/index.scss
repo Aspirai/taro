@@ -1,0 +1,20 @@
+.verification-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.verification-button {
+  background-color: #ffffff;
+  color: #28a745;
+  border-radius: 15px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.verification-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

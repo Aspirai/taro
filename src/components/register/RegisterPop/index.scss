@@ -106,26 +106,23 @@ input {
 .input-group-code{
   margin-bottom: 20px;
   position: relative;
-}
-
-.code-button {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  top: 10px;
-  background-color: #fff;
-  color: #28a745;
-  border: none;
-  border-radius: 50px;
-  // 设置字体垂直居中
-  line-height: 50px;
-  // transform: translateY(50%);
-  padding: 10px 20px;
-  z-index: 100;
+  display: flex; // 设置display: flex;使得验证码输入框和发送验证码按钮在同一行
+  flex-direction: row;
+  align-items: stretch; // 设置拉伸
   // border: 1px solid #000;
 }
 
-
+.verification-button-container {
+  height: 64px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  border-radius: 50px;
+  border: none;
+  z-index: 99;
+  // border: 1px solid #000;
+}
 
 .login-button {
   margin: 80px 0;

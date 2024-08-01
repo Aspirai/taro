@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Button, Input, Image, Checkbox, Text } from '@tarojs/components';
 import './index.scss';
-import VerificationButton from '../verification/index';
+import VerificationButton from '../VerificationButton/index';
 
-const LoginModal = ({ isVisible, onClose }) => {
+// isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
+const LoginModal = ({ isVisible, onClose, initialCountdown }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [openId, setOpenId] = useState('');
-  const [countdown, setCountdown] = useState(60);
+  const [countdown, setCountdown] = useState(initialCountdown);
 
 
   if (!isVisible) {
@@ -109,33 +110,10 @@ const LoginModal = ({ isVisible, onClose }) => {
     })
   }
 
-  const test = (countdown) => {
-      let timer;
-      console.log('获取验证码',countdown);
-      if (countdown > 0) {
-        timer = setInterval(() => {
-          setCountdown(prevCountdown => prevCountdown - 1);
-        }, 1000);
-      } else {
-        clearInterval(timer);
-      }
-      return () => clearInterval(timer);
-  }
-
   const phone_login = () => {
     if (countdown === 0) {
       setCountdown(60);
-      Taro.request({
-        url: 'http://127.0.0.1:4523/m1/4874230-4530188-default/ReCaptcha2/',
-        method: 'POST',
-        data: {
-          "phone": phoneNumber,
-          "code": verificationCode
-        },
-        success: function (res) {
-          console.log(res.data)
-        }
-      });
+
       console.log('获取验证码');
     }
   }
@@ -159,7 +137,7 @@ const LoginModal = ({ isVisible, onClose }) => {
       <View className='modal-content'>
         <View className='close-button' onClick={onClose}>×</View>
         <View className='top-bar'>
-          <Image className='avatar' src={require('../../assets/register/logo_icon@3x.png')} />
+          <Image className='avatar' src={require('../../../assets/register/logo_icon@3x.png')} />
           <View className='icon-strip'></View>
           <View className='register-welcome-text'>
             <Text className='register-welcome-text-top'>HI,</Text>
@@ -184,9 +162,11 @@ const LoginModal = ({ isVisible, onClose }) => {
           />
 
           {/* 实现点击之后60秒倒计时 */}
-          <Button className='code-button' onClick={() => test(countdown)}>
-            {countdown < 60 ? `${countdown}秒后重新获取` : '获取验证码'}
-          </Button>
+          {/* <Button className='code-button' onClick={() => countdown_button(countdown)}> */}
+          {/* <Button className='code-button' onClick={phone_login}> */}
+          {/* {countdown < 60 ? `${countdown}秒后重新获取` : '获取验证码'} */}
+          {/* </Button> */}
+          <VerificationButton phoneNumber={phoneNumber} verificationCode={verificationCode}/>
         </View>
         <Button className='login-button' onClick={phone_login2}>登录</Button>
         <View className='agreement-bottom'>
@@ -201,7 +181,7 @@ const LoginModal = ({ isVisible, onClose }) => {
           <View className='icons'>
             {/* button实现获取用户信息 */}
             {/* <Button className='getUserInfo' openType='getUserInfo' onGetUserInfo={onGetUserInfo}> */}
-            <Image src={require('../../assets/register/wechat_icon@3x.png')} onClick={wx_login} />
+            <Image src={require('../../../assets/register/wechat_icon@3x.png')} onClick={wx_login} />
             {/* </Button> */}
           </View>
         </View>
@@ -209,5 +189,5 @@ const LoginModal = ({ isVisible, onClose }) => {
     </View>
   );
 };
-
+// useCallBack
 export default LoginModal;

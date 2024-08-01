@@ -1,10 +1,12 @@
+import Taro from '@tarojs/taro';
 import React, { useState, useEffect } from 'react';
 import { View, Button } from '@tarojs/components';
 import './index.scss';
 
-const VerificationButton = () => {
+const VerificationButton = ({phoneNumber, verificationCode}) => {
   const [countdown, setCountdown] = useState(0);
 
+  // 设置倒计时
   useEffect(() => {
     let timer;
     if (countdown > 0) {
@@ -17,10 +19,21 @@ const VerificationButton = () => {
     return () => clearInterval(timer);
   }, [countdown]);
 
+  // 设置点击事件
   const handleClick = () => {
     if (countdown === 0) {
       setCountdown(60);
-      // 在这里添加获取验证码的逻辑，例如发起网络请求
+      Taro.request({
+        url: 'http://127.0.0.1:4523/m1/4874230-4530188-default/ReCaptcha2/',
+        method: 'POST',
+        data: {
+          "phone": phoneNumber,
+          "code": verificationCode
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      });
       console.log('获取验证码');
     }
   };

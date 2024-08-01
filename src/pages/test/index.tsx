@@ -1,41 +1,75 @@
-import React, { useState, useEffect } from 'react';
-import { View, Button } from '@tarojs/components';
+import { useState } from 'react';
 import './index.scss';
+import { View, Button, Input, Image, Checkbox, Text } from '@tarojs/components';
+import VerificationButton from '../../components/register/VerificationButton/index';
 
-const VerificationButton = () => {
-  const [countdown, setCountdown] = useState(0);
+// isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
+const Index = () => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [accessToken, setAccessToken] = useState('');
+  const [openId, setOpenId] = useState('');
 
-  useEffect(() => {
-    let timer;
-    if (countdown > 0) {
-      timer = setInterval(() => {
-        setCountdown(prevCountdown => prevCountdown - 1);
-      }, 1000);
-    } else {
-      clearInterval(timer);
-    }
-    return () => clearInterval(timer);
-  }, [countdown]);
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.detail.value);
+  };
 
-  const handleClick = () => {
-    if (countdown === 0) {
-      setCountdown(60);
-      // 在这里添加获取验证码的逻辑，例如发起网络请求
-      console.log('获取验证码');
-    }
+  const handleVerificationCodeChange = (e) => {
+    setVerificationCode(e.detail.value);
   };
 
   return (
-    <View className="verification-button-container">
-      <Button
-        className="verification-button"
-        onClick={handleClick}
-        disabled={countdown > 0}
-      >
-        {countdown > 0 ? `${countdown}s后重新获取` : '获取验证码'}
-      </Button>
+    <View className='login-modal'>
+      <View className='modal-content'>
+        <View className='close-button'>×</View>
+        <View className='top-bar'>
+          <Image className='avatar' src='../../assets/register/logo_icon@3x.png' />
+          <View className='icon-strip'></View>
+          <View className='register-welcome-text'>
+            <Text className='register-welcome-text-top'>HI,</Text>
+            <Text className='register-welcome-text-bottom'>欢迎登录</Text>
+          </View>
+        </View>
+        <View className='input-group'>
+          <Input
+            type='number'
+            placeholder='输入手机号'
+            // value={phoneNumber}
+            value={"12345678901"}
+            onInput={handlePhoneNumberChange}
+          />
+        </View>
+        <View className='input-group-code'>
+          <Input
+            placeholder='输入验证码'
+            // value={verificationCode}
+            value={"123456"}
+            onInput={handleVerificationCodeChange}
+          />
+
+          {/* 实现点击之后60秒倒计时 */}
+          <VerificationButton phoneNumber={1} verificationCode={2}/>
+        </View>
+        <Button className='login-button'>登录</Button>
+        <View className='agreement-bottom'>
+          <Checkbox value='false' className='agreement'>
+            我已阅读并同意
+            <Text className='link'>《使用条款》</Text>和
+            <Text className='link'>《隐私政策》</Text>
+          </Checkbox>
+        </View>
+        <View className='third-party-login'>
+          <Text>使用第三方登录</Text>
+          <View className='icons'>
+            {/* button实现获取用户信息 */}
+            {/* <Button className='getUserInfo' openType='getUserInfo' onGetUserInfo={onGetUserInfo}> */}
+            <Image src='../../assets/register/wechat_icon@3x.png' />
+            {/* </Button> */}
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
 
-export default VerificationButton;
+export default Index;
