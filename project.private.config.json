@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/companion/index",
+          "pathName": "pages/companion/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/test/index",
           "pathName": "pages/test/index",
           "query": "",

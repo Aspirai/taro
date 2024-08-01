@@ -166,7 +166,7 @@ const LoginModal = ({ isVisible, onClose, initialCountdown }) => {
           {/* <Button className='code-button' onClick={phone_login}> */}
           {/* {countdown < 60 ? `${countdown}秒后重新获取` : '获取验证码'} */}
           {/* </Button> */}
-          <VerificationButton phoneNumber={phoneNumber} verificationCode={verificationCode}/>
+          <VerificationButton phoneNumber={phoneNumber} verificationCode={verificationCode} countdown_button={0}/>
         </View>
         <Button className='login-button' onClick={phone_login2}>登录</Button>
         <View className='agreement-bottom'>

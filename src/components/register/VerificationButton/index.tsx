@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Button } from '@tarojs/components';
 import './index.scss';
 
-const VerificationButton = ({phoneNumber, verificationCode}) => {
-  const [countdown, setCountdown] = useState(0);
+const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) => {
+  const [countdown, setCountdown] = useState(countdown_button);
 
   // 设置倒计时
   useEffect(() => {

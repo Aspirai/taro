@@ -1,4 +1,64 @@
-.index {
-    padding: 20px;
-  }
+/* pages/chat/index.scss */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  // border: 1px solid #000;
+}
+
+.messages {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid #c08484;
+}
+
+.message {
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 80%;
+  border-radius: 20px;
+  // 实现文本自动换行
+  word-wrap: break-word;
+  // border: 1px solid #000;
+}
+
+.message.received {
+  background-color: #f4f4f5;
+  align-self: flex-start;
+}
+
+.message.sent {
+  background-color: #28a745;
+  align-self: flex-end;
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  height: 6%;
+  padding: 20px;
+  // border-top: 1px solid #ccc;
+}
+
+.input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 85%;
+  // 实现输入框自动换行
+  white-space: pre-wrap;
   
+  // border: 1px solid #000;
+}
+
+.send-button {
+  margin-left: 20px;
+  background-color: #28a745;
+  color: white;
+}

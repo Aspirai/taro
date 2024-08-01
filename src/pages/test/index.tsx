@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './index.scss';
 import { View, Button, Input, Image, Checkbox, Text } from '@tarojs/components';
 import VerificationButton from '../../components/register/VerificationButton/index';
+import LogInButton from '../../components/register/LogInButton';
 
 // isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
 const Index = () => {
@@ -9,6 +10,7 @@ const Index = () => {
   const [verificationCode, setVerificationCode] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [openId, setOpenId] = useState('');
+  const [countdown, setCountdown] = useState(0);
 
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.detail.value);
@@ -48,9 +50,9 @@ const Index = () => {
           />
 
           {/* 实现点击之后60秒倒计时 */}
-          <VerificationButton phoneNumber={1} verificationCode={2}/>
+          <VerificationButton phoneNumber={1} verificationCode={2} countdown_button={countdown}/>
         </View>
-        <Button className='login-button'>登录</Button>
+        <LogInButton countdown_button={countdown}/>
         <View className='agreement-bottom'>
           <Checkbox value='false' className='agreement'>
             我已阅读并同意
