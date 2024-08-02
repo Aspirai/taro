@@ -1,9 +1,8 @@
 // 用于配置页面的一些属性，如导航条背景色、标题、是否允许下拉刷新等
 
 export default {
-  usingComponents: {
-    "ec-canvas": "echarts-for-weixin"
-  },
+  navigationBarTitleText: '聊天',
+  usingComponents: {},
 }
 
 

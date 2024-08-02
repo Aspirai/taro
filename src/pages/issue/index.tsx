@@ -1,7 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { View } from '@tarojs/components'
-import Taro from '@tarojs/taro'
-import { EChart } from "../../echarts-taro3-react";
+import { EChart } from "echarts-taro3-react";
 import './index.scss'
 
 export default function Index() {

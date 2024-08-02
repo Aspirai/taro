@@ -3,7 +3,6 @@ import { Component, PropsWithChildren } from 'react'
 import { Provider } from 'mobx-react'
 
 import counterStore from './store/camera-path'
-import homeStore from './store/home'
 import crossTalkStore from './store/cross_talk'
 
 import './app.scss'
@@ -11,7 +10,6 @@ import './app.scss'
 // store用于存储全局状态
 const store = {
   counterStore,
-  homeStore,
   crossTalkStore,
 }
 

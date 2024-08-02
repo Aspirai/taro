@@ -2,6 +2,7 @@ export default defineAppConfig({
   pages: [
     'pages/home/index',
     'pages/camera/index',
+    'pages/chat/index',
     'pages/companion/index',
     'pages/issue/index',
     'pages/study/index',

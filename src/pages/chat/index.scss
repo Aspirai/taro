@@ -1,0 +1,60 @@
+/* pages/chat/index.scss */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between; // 实现消息列表和输入框之间的间距
+  // border: 1px solid #000;
+}
+
+.messages {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto; // 实现滚动
+  display: flex; // 实现消息垂直排列
+  flex-direction: column;
+  // border: 1px solid #c08484;
+}
+
+.message {
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 80%;
+  border-radius: 20px;
+  word-wrap: break-word; // 实现文本自动换行
+  // border: 1px solid #000;
+}
+
+.message.received {
+  background-color: #f4f4f5;
+  align-self: flex-start; // 实现消息左对齐
+}
+
+.message.sent {
+  background-color: #28a745;
+  align-self: flex-end; // 实现消息右对齐
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  height: 6%;
+  padding: 20px;
+  // border-top: 1px solid #ccc;
+}
+
+.input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 85%;
+  white-space: pre-wrap;  // 实现输入框自动换行
+}
+
+.send-button {
+  margin-left: 20px;
+  background-color: #28a745;
+  color: white;
+}
