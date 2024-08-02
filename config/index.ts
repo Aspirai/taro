@@ -1,5 +1,7 @@
+import path from "path"
+
 const config = {
-  projectName: 'myApp',
+  projectName: 'hospital-mini-app',
   date: '2024-7-18',
   designWidth: 750,
   deviceRatio: {
@@ -25,6 +27,11 @@ const config = {
   },
   mini: {
     postcss: {
+      autoprefixer: {
+        enable: true,
+        config: {
+        },
+      },
       pxtransform: {
         enable: true,
         config: {
@@ -62,12 +69,14 @@ const config = {
         }
       }
     }
-  }
+  },
 }
 
-module.exports = function (merge) {
-  if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
-  }
-  return merge({}, config, require('./prod'))
-}
+// module.exports = function (merge) {
+//   if (process.env.NODE_ENV === 'development') {
+//     return merge({}, config, require('./dev'))
+//   }
+//   return merge({}, config, require('./prod'))
+// }
+
+module.exports = config

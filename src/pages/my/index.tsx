@@ -2,7 +2,7 @@
 import Taro from '@tarojs/taro';
 import { useState } from 'react';
 import { View, Text, Image } from '@tarojs/components';
-import LoginModal from '../../components/register/RegisterPop';
+import LoginModal from "@/components/register/RegisterPop"
 import './index.scss';
 
 

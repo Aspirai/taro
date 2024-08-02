@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/issue/index",
+          "pathName": "pages/issue/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/companion/index",
           "pathName": "pages/companion/index",
           "query": "",

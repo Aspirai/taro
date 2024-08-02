@@ -13,7 +13,12 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/echarts/*": ["./src/echarts-taro3-react/lib"],
+    },
     "rootDir": ".",
     "jsx": "react-jsx",
     "allowJs": true,

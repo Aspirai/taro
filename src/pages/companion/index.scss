@@ -3,15 +3,15 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-between;
+  justify-content: space-between; // 实现消息列表和输入框之间的间距
   // border: 1px solid #000;
 }
 
 .messages {
   flex: 1;
   padding: 25px;
-  overflow-y: auto;
-  display: flex;
+  overflow-y: auto; // 实现滚动
+  display: flex; // 实现消息垂直排列
   flex-direction: column;
   // border: 1px solid #c08484;
 }
@@ -22,19 +22,18 @@
   border-radius: 5px;
   max-width: 80%;
   border-radius: 20px;
-  // 实现文本自动换行
-  word-wrap: break-word;
+  word-wrap: break-word; // 实现文本自动换行
   // border: 1px solid #000;
 }
 
 .message.received {
   background-color: #f4f4f5;
-  align-self: flex-start;
+  align-self: flex-start; // 实现消息左对齐
 }
 
 .message.sent {
   background-color: #28a745;
-  align-self: flex-end;
+  align-self: flex-end; // 实现消息右对齐
   color: white;
 }
 
@@ -51,10 +50,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   height: 85%;
-  // 实现输入框自动换行
-  white-space: pre-wrap;
-  
-  // border: 1px solid #000;
+  white-space: pre-wrap;  // 实现输入框自动换行
 }
 
 .send-button {

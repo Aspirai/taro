@@ -1,5 +1,5 @@
 {
-  "name": "myApp",
+  "name": "hospital-mini-app",
   "version": "1.0.0",
   "private": true,
   "description": "小白智护",
@@ -50,8 +50,10 @@
     "@tarojs/runtime": "3.6.34",
     "@tarojs/shared": "3.6.34",
     "@tarojs/taro": "3.6.34",
-    "mobx": "^4.8.0",
-    "mobx-react": "^6.1.4",
+    "echarts": "^5.1.2",
+    "echarts-taro3-react": "^1.0.13",
+    "mobx": "^6.13.1",
+    "mobx-react": "^9.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -67,6 +69,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "babel-preset-taro": "3.6.34",
     "eslint": "^8.12.0",
     "eslint-config-taro": "3.6.34",
