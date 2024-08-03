@@ -37,6 +37,12 @@ const Index = () => {
   const data = [whiteBloodCell, granularCell, redBloodCell, bloodPlatelet];
   const [selectedData, setSelectedData] = useState(data[0]);
 
+  const option1 = ['7天', '30天', '60天', '半年'];
+  const [selectedValue1, setSelectedValue1] = useState(option1[0]);
+  const handleChange1 = (e) => {
+    const { value } = e.detail;
+    setSelectedValue1(option1[value]);
+  };
   //#endregion
 
   return (
@@ -70,6 +76,12 @@ const Index = () => {
           <Picker mode="selector" range={option} onChange={handleChange}>
             <View className="picker">
               {selectedValue}
+              <View className='arrow'></View>
+            </View>
+          </Picker>
+          <Picker mode="selector" range={option1} onChange={handleChange1}>
+            <View className="picker">
+              {selectedValue1}
               <View className='arrow'></View>
             </View>
           </Picker>

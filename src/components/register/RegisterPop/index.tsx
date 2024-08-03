@@ -1,17 +1,27 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Button, Input, Image, Checkbox, Text } from '@tarojs/components';
 import './index.scss';
 import VerificationButton from '../VerificationButton/index';
+import LogInButton from '../LogInButton';
+import { inject, observer } from 'mobx-react';
+
+import Store from '../../../store/index';
+import { Observer } from 'mobx-react';
+
 
 // isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
-const LoginModal = ({ isVisible, onClose, initialCountdown }) => {
+const LoginModal = ({ isVisible, onClose }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [openId, setOpenId] = useState('');
-  const [countdown, setCountdown] = useState(initialCountdown);
+  const [countdown, setCountdown] = useState(0);
 
+  const { registerStore } = useContext(Store); // 通过useContext获取全局状态
+  const { time } = registerStore;
+  var { phone_number } = registerStore;
+  let { verification_code } = registerStore;
 
   if (!isVisible) {
     return null;
@@ -113,7 +123,6 @@ const LoginModal = ({ isVisible, onClose, initialCountdown }) => {
   const phone_login = () => {
     if (countdown === 0) {
       setCountdown(60);
-
       console.log('获取验证码');
     }
   }
@@ -148,27 +157,23 @@ const LoginModal = ({ isVisible, onClose, initialCountdown }) => {
           <Input
             type='number'
             placeholder='输入手机号'
-            // value={phoneNumber}
-            value={"12345678901"}
+            value={phone_number}
+            // value={"12345678901"}
             onInput={handlePhoneNumberChange}
           />
         </View>
         <View className='input-group-code'>
           <Input
             placeholder='输入验证码'
-            // value={verificationCode}
-            value={"123456"}
+            value={verification_code}
+            // value={"123456"}
             onInput={handleVerificationCodeChange}
           />
 
-          {/* 实现点击之后60秒倒计时 */}
-          {/* <Button className='code-button' onClick={() => countdown_button(countdown)}> */}
-          {/* <Button className='code-button' onClick={phone_login}> */}
-          {/* {countdown < 60 ? `${countdown}秒后重新获取` : '获取验证码'} */}
-          {/* </Button> */}
-          <VerificationButton phoneNumber={phoneNumber} verificationCode={verificationCode} countdown_button={0}/>
+          <VerificationButton phoneNumber={phone_number} verificationCode={verification_code} countdown_button={time}/>
         </View>
-        <Button className='login-button' onClick={phone_login2}>登录</Button>
+        {/* <Button className='login-button' onClick={phone_login2}>登录</Button> */}
+        <LogInButton countdown_button={time} length={verification_code} />
         <View className='agreement-bottom'>
           <Checkbox value='false' className='agreement'>
             我已阅读并同意

@@ -26,7 +26,7 @@ export default function Index() {
   };
   useEffect(() => {
     if(refBarChart.current) {
-        refBarChart.current?.refresh(defautOption);
+      refBarChart.current?.refresh(defautOption);
     }
   })
 

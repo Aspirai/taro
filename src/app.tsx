@@ -2,14 +2,14 @@
 import { Component, PropsWithChildren } from 'react'
 import { Provider } from 'mobx-react'
 
-import counterStore from './store/camera-path'
 import crossTalkStore from './store/cross_talk'
+import registerStore from './store/register_store'
 
 import './app.scss'
 
 // store用于存储全局状态
 const store = {
-  counterStore,
+  registerStore,
   crossTalkStore,
 }
 

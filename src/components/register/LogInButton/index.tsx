@@ -3,23 +3,24 @@ import React, { useState, useEffect } from 'react';
 import { View, Button } from '@tarojs/components';
 import './index.scss';
 
-const LogInButton = ({countdown_button}) => {
+const LogInButton = ({ countdown_button, length }) => {
   const [countdown, setCountdown] = useState(countdown_button);
   const [verificationCode, setVerificationCode] = useState('');
   const [isLoginEnabled, setIsLoginEnabled] = useState(false);
 
   // 监听验证码输入框的值
   useEffect(() => {
-    if (verificationCode.length === 6 || countdown > 0) {
+    if (verificationCode.length === 6 || countdown_button === 0) {
+      console.log(countdown_button)
       setIsLoginEnabled(true);
     } else {
       setIsLoginEnabled(false);
     }
-  }, [verificationCode, countdown]);
+  }, [verificationCode, countdown_button]);
 
   // 设置点击事件
   const handleClick = () => {
-    console.log('获取验证码');
+    console.log('获取验证码',countdown_button);
   };
 
   return (

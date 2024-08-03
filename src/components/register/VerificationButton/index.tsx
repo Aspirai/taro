@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Button } from '@tarojs/components';
 import './index.scss';
 
+import Store from '../../../store/index';
+
 const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) => {
   const [countdown, setCountdown] = useState(countdown_button);
 
@@ -21,6 +23,7 @@ const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) =
 
   // 设置点击事件
   const handleClick = () => {
+    console.log(countdown)
     if (countdown === 0) {
       setCountdown(60);
       Taro.request({
