@@ -10,31 +10,27 @@ const LogInButton = ({ countdown_button }) => {
   const [isLoginEnabled, setIsLoginEnabled] = useState(false);
 
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
-  const { time } = registerStore;
-  const { phone_number } = registerStore;
-  const { verification_code } = registerStore;
-  const { select_box } = registerStore;
+  const { time, phone_number, verification_code, select_box } = registerStore;
 
 
   // 监听验证码输入框的值
   useEffect(() => {
-    if (select_box && verification_code.length === 6 || time === 0) {
-      console.log(countdown_button)
+    if (verification_code.length === 6 || time === 0) {
       setIsLoginEnabled(true);
     } else {
       setIsLoginEnabled(false);
     }
-  }, [verification_code, time]);
+  }, [select_box, verification_code, time]);
 
   // 设置点击事件
   const handleClick = () => {
-    if (select_box === 'false') {
+    console.log(select_box)
+    if (select_box === false) {
       Taro.showToast({
         title: '请阅读并同意用户协议',
         icon: 'none',
         duration: 2000
       });
-      return;
     } else if (phone_number.length !== 11 || verification_code.length !== 6) {
       Taro.showToast({
         title: '请输入正确的手机号和验证码',

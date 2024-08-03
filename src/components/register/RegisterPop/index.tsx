@@ -7,7 +7,6 @@ import LogInButton from '../LogInButton';
 import { inject, observer } from 'mobx-react';
 
 import Store from '../../../store/index';
-import { Observer } from 'mobx-react';
 
 
 // isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
@@ -17,11 +16,9 @@ const LoginModal = ({ isVisible, onClose }) => {
   const [accessToken, setAccessToken] = useState('');
   const [openId, setOpenId] = useState('');
   const [countdown, setCountdown] = useState(0);
-
+  
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
-  const { time } = registerStore;
-  var { phone_number } = registerStore;
-  let { verification_code } = registerStore;
+  const { time, select_box } = registerStore;
 
   if (!isVisible) {
     return null;
@@ -36,6 +33,10 @@ const LoginModal = ({ isVisible, onClose }) => {
     setVerificationCode(e.detail.value);
     registerStore.setVerificationCode(e.detail.value);
   };
+
+  const handleSelectBoxChange = () => {
+    registerStore.setSelectBox();
+  }
 
   // const url = "	http://127.0.0.1:4523/m1/4874230-4530188-default/user/"
   const getToken = () => {
@@ -172,12 +173,12 @@ const LoginModal = ({ isVisible, onClose }) => {
             onInput={handleVerificationCodeChange}
           />
 
-          <VerificationButton phoneNumber={phone_number} verificationCode={verification_code} countdown_button={time}/>
+          <VerificationButton countdown_button={time}/>
         </View>
         {/* <Button className='login-button' onClick={phone_login2}>登录</Button> */}
         <LogInButton countdown_button={time} />
         <View className='agreement-bottom'>
-          <Checkbox value='false' className='agreement'>
+          <Checkbox value='false' className='agreement' onClick={handleSelectBoxChange}>
             我已阅读并同意
             <Text className='link'>《使用条款》</Text>和
             <Text className='link'>《隐私政策》</Text>
@@ -197,4 +198,4 @@ const LoginModal = ({ isVisible, onClose }) => {
   );
 };
 // useCallBack
-export default LoginModal;
+export default observer(LoginModal);

@@ -4,13 +4,14 @@ import { View, Button } from '@tarojs/components';
 import './index.scss';
 
 import Store from '../../../store/index';
+import { observer } from 'mobx-react';
 
 
-const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) => {
+const VerificationButton = ({ countdown_button }) => {
   const [countdown, setCountdown] = useState(countdown_button);
 
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
-  const { time } = registerStore;
+  const { phone_number } = registerStore;
 
   // 设置倒计时
   useEffect(() => {
@@ -28,15 +29,15 @@ const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) =
   // 设置点击事件
   const handleClick = () => {
     registerStore.setTime();
-    console.log('countdown is: ',countdown)
+    console.log(phone_number)
+    // console.log('countdown is: ',countdown)
     if (countdown === 0) {
       setCountdown(60);
       Taro.request({
         url: 'http://127.0.0.1:4523/m1/4874230-4530188-default/ReCaptcha2/',
         method: 'POST',
         data: {
-          "phone": phoneNumber,
-          "code": verificationCode
+          "phone": phone_number,
         },
         success: function (res) {
           console.log(res.data)
@@ -59,4 +60,4 @@ const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) =
   );
 };
 
-export default VerificationButton;
+export default observer(VerificationButton);
