@@ -1,12 +1,16 @@
 import Taro from '@tarojs/taro';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { View, Button } from '@tarojs/components';
 import './index.scss';
 
 import Store from '../../../store/index';
 
+
 const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) => {
   const [countdown, setCountdown] = useState(countdown_button);
+
+  const { registerStore } = useContext(Store); // 通过useContext获取全局状态
+  const { time } = registerStore;
 
   // 设置倒计时
   useEffect(() => {
@@ -23,7 +27,8 @@ const VerificationButton = ({phoneNumber, verificationCode, countdown_button}) =
 
   // 设置点击事件
   const handleClick = () => {
-    console.log(countdown)
+    registerStore.setTime();
+    console.log('countdown is: ',countdown)
     if (countdown === 0) {
       setCountdown(60);
       Taro.request({

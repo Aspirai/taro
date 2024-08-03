@@ -29,10 +29,12 @@ const LoginModal = ({ isVisible, onClose }) => {
 
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.detail.value);
+    registerStore.setPhoneNumber(e.detail.value);
   };
 
   const handleVerificationCodeChange = (e) => {
     setVerificationCode(e.detail.value);
+    registerStore.setVerificationCode(e.detail.value);
   };
 
   // const url = "	http://127.0.0.1:4523/m1/4874230-4530188-default/user/"
@@ -157,7 +159,7 @@ const LoginModal = ({ isVisible, onClose }) => {
           <Input
             type='number'
             placeholder='输入手机号'
-            value={phone_number}
+            value={phoneNumber}
             // value={"12345678901"}
             onInput={handlePhoneNumberChange}
           />
@@ -165,7 +167,7 @@ const LoginModal = ({ isVisible, onClose }) => {
         <View className='input-group-code'>
           <Input
             placeholder='输入验证码'
-            value={verification_code}
+            value={verificationCode}
             // value={"123456"}
             onInput={handleVerificationCodeChange}
           />
@@ -173,7 +175,7 @@ const LoginModal = ({ isVisible, onClose }) => {
           <VerificationButton phoneNumber={phone_number} verificationCode={verification_code} countdown_button={time}/>
         </View>
         {/* <Button className='login-button' onClick={phone_login2}>登录</Button> */}
-        <LogInButton countdown_button={time} length={verification_code} />
+        <LogInButton countdown_button={time} />
         <View className='agreement-bottom'>
           <Checkbox value='false' className='agreement'>
             我已阅读并同意
