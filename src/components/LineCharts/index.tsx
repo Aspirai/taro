@@ -2,14 +2,13 @@ import { useRef, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import { EChart } from "echarts-taro3-react";
 import './index.scss'
-import { split } from 'postcss/lib/list';
 
 export default function LineCharts({ data }) {
   const refBarChart = useRef<any>()
   const defautOption = {
     xAxis: { // x轴
       type: "category", // 类目轴
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun','1'],
       axisTick: { // 坐标轴刻度相关设置
         alignWithLabel: true, // 刻度线和标签对齐
       },

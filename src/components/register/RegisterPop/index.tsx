@@ -4,9 +4,9 @@ import { View, Button, Input, Image, Checkbox, Text } from '@tarojs/components';
 import './index.scss';
 import VerificationButton from '../VerificationButton/index';
 import LogInButton from '../LogInButton';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 
-import Store from '../../../store/index';
+import Store from '../../../store/index'; //引入全局状态管理
 
 
 // isVisible 和 onClose 是父组件传递给子组件的两个属性，用于控制登录弹窗的显示和关闭
@@ -18,7 +18,7 @@ const LoginModal = ({ isVisible, onClose }) => {
   const [countdown, setCountdown] = useState(0);
   
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
-  const { time, select_box } = registerStore;
+  const { time } = registerStore;
 
   if (!isVisible) {
     return null;

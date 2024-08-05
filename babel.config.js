@@ -13,15 +13,27 @@ module.exports = {
     }]
   ],
   "plugins": [
-    ["module-resolver", {
-      "root": [
-        "./src"
-      ],
-      "alias": {
-        "@/components": "./src/components",
-        "@/pages": "./src/pages",
-        "@/echarts": "./src/echarts-taro3-react/lib",
-      }
-    }]
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "@/components": "./src/components",
+          "@/pages": "./src/pages",
+          "@/echarts": "./src/echarts-taro3-react/lib",
+        },
+      },
+    ],
+    [
+      "import",
+      {
+        "libraryName": "@antmjs/vantui",
+        "libraryDirectory": "es",
+        "style": true
+      },
+      "@antmjs/vantui",
+    ]
   ]
 }

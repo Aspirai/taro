@@ -37,9 +37,9 @@ const registerStore = observable({
     // 改变选择框状态
     setSelectBox() {
         this.select_box = !this.select_box;
-        setInterval(() => {
-            console.log(this.select_box)
-        }, 1000);
+        // setInterval(() => {
+        //     console.log(this.select_box)
+        // }, 1000);
     }
 })
 

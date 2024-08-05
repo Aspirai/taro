@@ -12,7 +12,6 @@ const LogInButton = ({ countdown_button }) => {
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
   const { time, phone_number, verification_code, select_box } = registerStore;
 
-
   // 监听验证码输入框的值
   useEffect(() => {
     if (verification_code.length === 6 || time === 0) {

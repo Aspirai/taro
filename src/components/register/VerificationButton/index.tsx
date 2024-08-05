@@ -28,22 +28,30 @@ const VerificationButton = ({ countdown_button }) => {
 
   // 设置点击事件
   const handleClick = () => {
-    registerStore.setTime();
-    console.log(phone_number)
-    // console.log('countdown is: ',countdown)
-    if (countdown === 0) {
-      setCountdown(60);
-      Taro.request({
-        url: 'http://127.0.0.1:4523/m1/4874230-4530188-default/ReCaptcha2/',
-        method: 'POST',
-        data: {
-          "phone": phone_number,
-        },
-        success: function (res) {
-          console.log(res.data)
-        }
+    if (phone_number.length !== 11 && phone_number.replace(/[^0-9]/ig, "").length !== 11) { // 正则表达式判断是否为11位数字
+      Taro.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
       });
-      console.log('获取验证码');
+    } else {
+      registerStore.setTime();
+      console.log(phone_number)
+      // console.log('countdown is: ',countdown)
+      if (countdown === 0) {
+        setCountdown(60);
+        Taro.request({
+          url: 'http://127.0.0.1:4523/m1/4874230-4530188-default/ReCaptcha2/',
+          method: 'POST',
+          data: {
+            "phone": phone_number,
+          },
+          success: function (res) {
+            console.log(res.data)
+          }
+        });
+        console.log('获取验证码');
+      }
     }
   };
 
