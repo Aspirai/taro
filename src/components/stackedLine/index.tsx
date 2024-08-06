@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components';
 import './index.scss';
-// import LineCharts1 from '@/components/stackedLine';
+
 
 const Index: React.FC = () => {
   return (
     <View className="index">
       <Text>Hello issue!</Text>
-      {/* <LineCharts1 /> */}
     </View>
   );
 };
 
 export default Index;
+

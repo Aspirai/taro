@@ -1,8 +1,8 @@
 // import { ComponentType } from 'react'
-import { View, Input, Text, Button, Image, Swiper, SwiperItem, Block } from '@tarojs/components'
+import { View, Input, Text, Button, Image } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 
 

@@ -1,23 +1,22 @@
 import { View, Text, Picker } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import LineCharts from '@/components/LineCharts';
+import LineCharts from '../../components/LineCharts';
 import './index.scss';
 import { useState } from 'react';
-import { Table } from '@antmjs/vantui';
 
 const Index = () => {
 
   // 跳转路由到camera页面
   const handleJumpToCamera = () => {
     Taro.navigateTo({
-      url: '/pages/camera/index',
+      url: '/package/camera/index',
     });
   };
 
   // 跳转路由到chat页面
   const handleJumpToChat = () => {
     Taro.navigateTo({
-      url: '/pages/chat/index',
+      url: '/package/chat/index',
     });
   };
 
@@ -40,8 +39,6 @@ const Index = () => {
   const [selectedData, setSelectedData] = useState(data[0]);
 
   const date = ['7天', '30天', '60天', '半年']; // 日期选择
-  // 今天的日期
-  const today = new Date();
 
   const [selectedValue1, setSelectedValue1] = useState(date[0]);
   const handleChange1 = (e) => {
@@ -68,7 +65,7 @@ const Index = () => {
       }
     });
   };
-  console.log(requestDatas());
+  // console.log(requestDatas());
   //#endregion
 
   return (
@@ -115,6 +112,7 @@ const Index = () => {
         </View>
         <LineCharts data={selectedData} />
       </View>
+
     </View>
   );
 };

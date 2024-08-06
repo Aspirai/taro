@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/test/index",
+          "pathName": "test/test/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/issue/index",
           "pathName": "pages/issue/index",
           "query": "",
@@ -19,13 +26,6 @@
         {
           "name": "pages/companion/index",
           "pathName": "pages/companion/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/test/index",
-          "pathName": "pages/test/index",
           "query": "",
           "launchMode": "default",
           "scene": null

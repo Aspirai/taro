@@ -124,10 +124,17 @@ const LoginModal = ({ isVisible, onClose }) => {
   }
 
   const phone_login = () => {
-    if (countdown === 0) {
-      setCountdown(60);
-      console.log('获取验证码');
-    }
+    Taro.request({
+      url: 'https://leukacare.cn/api/v1/users/signup',
+      method: 'POST',
+      data: {
+        "phone": phoneNumber,
+        "code": verificationCode
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   }
 
   const phone_login2 = () => {

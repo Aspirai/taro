@@ -1,13 +1,32 @@
 export default defineAppConfig({
   pages: [
     'pages/home/index',
-    'pages/camera/index',
-    'pages/chat/index',
+    // 'pages/camera/index',
+    // 'pages/chat/index',
     'pages/companion/index',
     'pages/issue/index',
     'pages/study/index',
     'pages/my/index',
-    'pages/test/index',
+    // 'pages/test/index',
+  ],
+  subPackages: [
+    {
+      root: 'package/',
+      pages: [
+        'camera/index',
+        'chat/index',
+        // 'companion/index',
+        // 'issue/index',
+        // 'study/index',
+        // 'my/index',
+      ],
+    },
+    {
+      root: 'test/',
+      pages: [
+        'test/index',
+      ],
+    },
   ],
   window: {
     backgroundTextStyle: 'light',

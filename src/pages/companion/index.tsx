@@ -6,16 +6,16 @@ import './index.scss';
 const Index: React.FC = () => {
 
   const [messages, setMessages] = useState([
-    { type: 'received', text: 'Hi, how can I help you today?' },
-    { type: 'sent', text: "Hey, I'm having trouble with my account." },
-    { type: 'received', text: 'What seems to be the problem?' },
-    { type: 'sent', text: "I can't log in." }
+    { type: 'agent', content: 'Hi, how can I help you today?' },
+    { type: 'user', content: "Hey, I'm having trouble with my account." },
+    { type: 'agent', content: 'What seems to be the problem?' },
+    { type: 'user', content: "I can't log in." }
   ]);
   const [inputValue, setInputValue] = useState('');
 
   const handleSend = () => {
     if (inputValue.trim()) {
-      setMessages([...messages, { type: 'sent', text: inputValue }]);
+      setMessages([...messages, { type: 'user', content: inputValue }]);
       setInputValue('');
     }
   };
@@ -26,7 +26,7 @@ const Index: React.FC = () => {
       <View className='messages'>
         {messages.map((message, index) => (
           <View key={index} className={`message ${message.type}`}>
-            <Text>{message.text}</Text>
+            <Text>{message.content}</Text>
           </View>
         ))}
       </View>

@@ -26,12 +26,12 @@
   // border: 1px solid #000;
 }
 
-.message.received {
+.message.agent {
   background-color: #f4f4f5;
   align-self: flex-start; // 实现消息左对齐
 }
 
-.message.sent {
+.message.user {
   background-color: #28a745;
   align-self: flex-end; // 实现消息右对齐
   color: white;
