@@ -15,7 +15,6 @@ const LoginModal = ({ isVisible, onClose }) => {
   const [verificationCode, setVerificationCode] = useState('');
   const [accessToken, setAccessToken] = useState('');
   const [openId, setOpenId] = useState('');
-  const [countdown, setCountdown] = useState(0);
   
   const { registerStore } = useContext(Store); // 通过useContext获取全局状态
   const { time } = registerStore;

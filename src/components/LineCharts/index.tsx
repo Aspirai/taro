@@ -12,7 +12,7 @@ export default function LineCharts({ data }) {
       axisTick: { // 坐标轴刻度相关设置
         alignWithLabel: true, // 刻度线和标签对齐
       },
-      axisLine: {      //设置坐标轴颜色
+      axisLine: {  //设置坐标轴颜色
         lineStyle: {
           color: "#949494"
         }
