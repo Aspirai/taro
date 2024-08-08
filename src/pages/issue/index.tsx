@@ -3,7 +3,6 @@ import { View, Text } from '@tarojs/components';
 import './index.scss';
 import StackedLine from '@/components/stackedLine'; // Correctly import the component with a capitalized name
 import Taro from '@tarojs/taro';
-import { keys } from 'mobx';
 
 const Index: React.FC = () => {
   let data = [];
