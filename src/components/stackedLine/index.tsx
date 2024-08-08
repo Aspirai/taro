@@ -2,8 +2,10 @@ import { useRef, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import { EChart } from "echarts-taro3-react";
 import './index.scss'
+import { animation } from '@tarojs/shared';
 
-export default function StackedLine() {
+export default function LineCharts({ data }) {
+  const { whiteBloodCell, redBloodCell, hemoglobin, bloodPlatelet } = data;
   const refBarChart = useRef<any>()
   const defautOption = {
     // title: { // 标题
@@ -52,7 +54,7 @@ export default function StackedLine() {
         name: '白细胞计数',
         type: 'line',
         stack: 'Total',
-        data: [120, 132, 101, 134, 90, 230, 210],
+        data: whiteBloodCell,
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -103,7 +105,7 @@ export default function StackedLine() {
         name: '红细胞计数',
         type: 'line',
         stack: 'Total',
-        data: [220, 182, 191, 234, 290, 330, 310],
+        data: redBloodCell,
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -154,7 +156,7 @@ export default function StackedLine() {
         name: '血红蛋白量',
         type: 'line',
         stack: 'Total',
-        data: [150, 232, 201, 154, 190, 330, 410],
+        data: hemoglobin,
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -205,7 +207,7 @@ export default function StackedLine() {
         name: '血小板计数',
         type: 'line',
         stack: 'Total',
-        data: [320, 332, 301, 334, 390, 330, 320],
+        data: bloodPlatelet,
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -253,15 +255,18 @@ export default function StackedLine() {
         smooth: true, // 平滑曲线
       },
     ],
+    animation: false, // 关闭动画
+    animationDuration: 0, // 动画时长
+    animationEasing: "linear", // 动画缓动效果
   };
   useEffect(() => {
     if (refBarChart.current) {
       refBarChart.current?.refresh(defautOption);
     }
-  })
+  }, [data])
 
   return (
-    <View className='StackedLine'>
+    <View className='stackedLine'>
       <EChart ref={refBarChart} canvasId='line-canvas' />
     </View>
   )
