@@ -1,11 +1,35 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
 import { EChart } from "echarts-taro3-react";
 import './index.scss'
-import { animation } from '@tarojs/shared';
+import { set } from 'mobx';
 
 export default function LineCharts({ data }) {
-  const { whiteBloodCell, redBloodCell, hemoglobin, bloodPlatelet } = data;
+  const { WBC, RBC, Hgb, HCT, MCV, MCH, MCHC, PLT, Lymph0,
+    Mono0, Neut0, Eos0, Baso0, Lymph1, Mono1, Neut1, Eos1,
+    Baso1, RDW_CV, RDW_SD, PLCR, Ret1, Ret0, IRF, HRF, MFR,
+    LFR, MPV, PDW } = data;
+
+
+  // 归一化函数
+  // function normalize(array) {
+  //   // 归一化公式：(X - min) / (max - min)
+  //   // 延时加载，获取最大值和最小值
+  //   if (!array) return [];
+  //   const min = Math.min(...array); // 获取数组中的最小值
+  //   const max = Math.max(...array); // 获取数组中的最大值
+  //   return array.map(value => (value - min) / (max - min)); // 归一化公式
+  // }
+
+  // // 归一化后的数据
+  // const WBCNorm = normalize(WBC);
+  // const RBCNorm = normalize(RBC);
+  // const HgbNorm = normalize(Hgb);
+  // const PLTNorm = normalize(PLT);
+
+  // const result = [WBC, RBC, Hgb, PLT]
+  const [result, setResult] = useState([WBC, RBC, Hgb, PLT]);
+
   const refBarChart = useRef<any>()
   const defautOption = {
     // title: { // 标题
@@ -36,7 +60,8 @@ export default function LineCharts({ data }) {
       },
     },
     yAxis: { // y轴
-      type: "value",
+      // type: "value", // 数值轴
+      type: "log", // 对数轴
       axisLine: {
         lineStyle: {
           color: "#949494"
@@ -51,18 +76,18 @@ export default function LineCharts({ data }) {
     },
     series: [
       {
-        name: '白细胞计数',
+        name: '红细胞计数',
         type: 'line',
-        stack: 'Total',
-        data: whiteBloodCell,
+        stack: 'Total', // 数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置
+        data: result[1], // 数据
         lineStyle: { // 线条样式
           normal: {
-            color: "#14ce6f", // 线条颜色
+            color: "#14ce6f ", // 线条颜色
           },
         },
         itemStyle: { // 折线拐点标志的样式
           normal: {
-            color: "#14ce6f", // 拐点颜色
+            color: "#14ce6f ", // 拐点颜色
           },
         },
         symbol: "circle", // 拐点形状
@@ -70,11 +95,11 @@ export default function LineCharts({ data }) {
         label: { // 显示数据
           show: true,
           position: "top",
-          color: "#14ce6f",
+          color: "#14ce6f ",
         },
         showBackground: true,
         backgroundStyle: { // 区域填充样式
-          color: "#f3f3f3",
+          color: "#14ce6f ",
         },
         areaStyle: { // 区域填充样式
           normal: {
@@ -88,7 +113,7 @@ export default function LineCharts({ data }) {
               colorStops: [
                 {
                   offset: 0, // 0% 处的颜色
-                  color: "#7cffbb" // 线处的颜色
+                  color: "#14ce6f " // 线处的颜色
                 },
                 {
                   offset: 1, // 100% 处的颜色
@@ -102,10 +127,10 @@ export default function LineCharts({ data }) {
         smooth: true, // 平滑曲线
       },
       {
-        name: '红细胞计数',
+        name: '白细胞计数',
         type: 'line',
         stack: 'Total',
-        data: redBloodCell,
+        data: result[0],
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -156,7 +181,7 @@ export default function LineCharts({ data }) {
         name: '血红蛋白量',
         type: 'line',
         stack: 'Total',
-        data: hemoglobin,
+        data: result[2],
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -207,7 +232,7 @@ export default function LineCharts({ data }) {
         name: '血小板计数',
         type: 'line',
         stack: 'Total',
-        data: bloodPlatelet,
+        data: result[3],
         lineStyle: { // 线条样式
           normal: {
             color: "#14ce6f", // 线条颜色
@@ -263,7 +288,15 @@ export default function LineCharts({ data }) {
     if (refBarChart.current) {
       refBarChart.current?.refresh(defautOption);
     }
-  }, [data])
+
+    if (result[0] == null) {
+      // 延时
+      setTimeout(() => {
+        setResult([WBC, RBC, Hgb, PLT]);
+      }, 200);
+      console.log("result", result);
+    }
+  }, [result]);
 
   return (
     <View className='stackedLine'>

@@ -24,7 +24,7 @@ const Index = () => {
             result[key].push(item.datas[key]); // Push the data to the result object
           });
         });
-        // console.log(result);
+        console.log(result);
         setResult(result); // Set the result state variable with the result object
       },
       fail: (err) => {
@@ -36,12 +36,12 @@ const Index = () => {
   useEffect(() => { // 4. Call the getBloodTest function in the useEffect hook
     getBloodTest();
     // console.log("result", result)
-  }, []); // 5. Add an empty dependency array to the useEffect hook
+  }, []); // 5. Add an empty dependency array to the useEffect hook#027DCS
 
   return (
     <View className="index">
-      {result ? <LineCharts data={result} /> : <Text>Loading...</Text>}
-      {/* <LineCharts data={result} /> */}
+      {/* {result ? <LineCharts data={result} /> : <Text>Loading...</Text>} */}
+      <LineCharts data={result} />
     </View>
   );
 };
